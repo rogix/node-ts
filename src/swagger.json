@@ -7,5 +7,75 @@
 		"contact": {
 			"email": "eu@dev"
 		}
+	},
+	"paths": {
+		"/categories": {
+			"post": {
+				"tags": [
+					"Category"
+				],
+				"summary": "Create a Category",
+				"description": "Create a new category",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"proprerties": {
+									"name": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									}
+								},
+								"example": {
+									"name": "category name sample",
+									"description": "Category sample"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Created"
+					},
+					"500": {
+						"description": "Category already exists"
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"Category"
+				],
+				"summary": "List all categories",
+				"description": "Lis categories",
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"description": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
