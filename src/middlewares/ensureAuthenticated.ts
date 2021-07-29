@@ -35,6 +35,11 @@ export async function ensureAuthenticated(
       throw new AppError("User does not exists", 401);
     }
 
+    // request.user é sobrescrito na pasta @types/expresss
+    request.user = {
+      id: user_id,
+    };
+
     next();
   } catch (error) {
     throw new AppError("Invalid token", 401);
